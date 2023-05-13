@@ -48,6 +48,11 @@ const NavBar = () => {
                 UseState
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/posts">
+                Posts
+              </NavLink>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input
