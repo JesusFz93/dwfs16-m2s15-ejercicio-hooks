@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const PostsPage = () => {
   const [posts, setPosts] = useState([]);
+  const [calculo, setCalculo] = useState(0);
 
   const obtenerPosts = async () => {
     const resp = await axios.get("https://jsonplaceholder.typicode.com/posts");
     console.log(resp.data);
     setPosts(resp.data);
   };
+
+  const handleCalcular = () => {
+    setCalculo(calculo + 1);
+  };
+
+  useEffect(() => {
+    obtenerPosts();
+  }, []);
 
   return (
     <>
@@ -25,6 +34,13 @@ const PostsPage = () => {
             onClick={obtenerPosts}
           >
             Obtener informacion
+          </button>
+          <button
+            type="button"
+            className="btn btn-info"
+            onClick={handleCalcular}
+          >
+            Calcular {calculo}
           </button>
         </article>
       </main>
